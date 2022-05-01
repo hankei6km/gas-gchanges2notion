@@ -3,7 +3,7 @@
  * @copyright (c) 2022 hankei6km
  * @license MIT
  * see "LICENSE.txt" "OPEN_SOURCE_LICENSES.txt" of "gas-gchanges2notion.zip" in
- * releases(https://github.com/hankei6km/gas-gchanges2html/releases)
+ * releases(https://github.com/hankei6km/gas-gchanges2notion/releases)
  */
 
 'use strict'
