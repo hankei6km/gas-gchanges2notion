@@ -24,11 +24,13 @@ afterEach(() => {
   global.SlidesApp = saveSlidesApp
 })
 function getMockNewBlob() {
-  return jest.fn().mockImplementation((v) => {
-    return {
-      getBytes: jest.fn<void, [string]>().mockImplementation(() => v)
-    }
-  })
+  return jest
+    .fn<(v: string[]) => { getBytes: () => string[] }>()
+    .mockImplementation((v: string[]) => {
+      return {
+        getBytes: jest.fn<() => string[]>().mockImplementation(() => v)
+      }
+    })
 }
 
 describe('isTextType()', () => {
