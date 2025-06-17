@@ -116,7 +116,7 @@ describe('asText()', () => {
     expect(asText('text/plain', 'text', fileObj as any, 'test-id')).toEqual(
       'test-plain-text'
     )
-    expect(mockGetAs).toBeCalledWith('text/plain')
+    expect(mockGetAs).toHaveBeenCalledWith('text/plain')
   })
 
   it('should get text from DcumentApp', () => {
@@ -136,7 +136,7 @@ describe('asText()', () => {
         'test-id'
       )
     ).toEqual('test-document-text')
-    expect(mockOpenById).toBeCalledWith('test-id')
+    expect(mockOpenById).toHaveBeenCalledWith('test-id')
   })
 
   it('should get text from SpreadsheetApp', () => {
@@ -181,9 +181,9 @@ test-val-3-1\ttest-val-3-2`)
       {} as any,
       'test-id'
     )
-    expect(mockOpenById).toBeCalledWith('test-id')
-    expect(mockRange).toBeCalledWith(1, 4, 3, 2)
-    expect(mockRange).toBeCalledWith(1, 4, 70, 70)
+    expect(mockOpenById).toHaveBeenCalledWith('test-id')
+    expect(mockRange).toHaveBeenCalledWith(1, 4, 3, 2)
+    expect(mockRange).toHaveBeenCalledWith(1, 4, 70, 70)
   })
 
   it('should get text from SlidesApp', () => {
@@ -235,7 +235,7 @@ test-shape1-2
 ---
 test-shape2-1
 test-shape2-2`)
-    expect(mockOpenById).toBeCalledWith('test-id')
+    expect(mockOpenById).toHaveBeenCalledWith('test-id')
   })
 })
 
@@ -290,8 +290,8 @@ describe('changedItems()', () => {
       items.push(item)
     }
 
-    expect(mockFileById).toBeCalledWith('test-id-1')
-    expect(mockFileById).toBeCalledWith('test-id-2')
+    expect(mockFileById).toHaveBeenCalledWith('test-id-1')
+    expect(mockFileById).toHaveBeenCalledWith('test-id-2')
     expect(items).toEqual([
       [
         {

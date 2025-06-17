@@ -98,15 +98,15 @@ describe('GrecentToNotion.send()', () => {
       },
       { items: [] }
     )
-    expect(mockSortedItems).toBeCalledWith('test-api-key', 'test-database-id')
-    expect(mockCreatePage).toBeCalledWith('test-api-key', 'test-1')
-    expect(mockUpdatePage).toBeCalledWith('test-api-key', 'test-2')
-    expect(mockUpdatePage).toBeCalledWith('test-api-key', 'test-3')
-    expect(mockUpdatePage).toBeCalledWith('test-api-key', {
+    expect(mockSortedItems).toHaveBeenCalledWith('test-api-key', 'test-database-id')
+    expect(mockCreatePage).toHaveBeenCalledWith('test-api-key', 'test-1')
+    expect(mockUpdatePage).toHaveBeenCalledWith('test-api-key', 'test-2')
+    expect(mockUpdatePage).toHaveBeenCalledWith('test-api-key', 'test-3')
+    expect(mockUpdatePage).toHaveBeenCalledWith('test-api-key', {
       page_id: 'test-over-1',
       archived: true
     })
-    expect(mockUpdatePage).toBeCalledWith('test-api-key', {
+    expect(mockUpdatePage).toHaveBeenCalledWith('test-api-key', {
       page_id: 'test-over-2',
       archived: true
     })

@@ -166,8 +166,8 @@ describe('genCreatePageParameters()', () => {
       params.push(param)
     }
 
-    expect(mockStoredItems.getPageId).toBeCalledWith('test-id-1')
-    expect(mockStoredItems.getPageId).toBeCalledWith('test-id-2')
+    expect(mockStoredItems.getPageId).toHaveBeenCalledWith('test-id-1')
+    expect(mockStoredItems.getPageId).toHaveBeenCalledWith('test-id-2')
 
     expect(params).toEqual([
       [
