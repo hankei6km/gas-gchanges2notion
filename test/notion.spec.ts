@@ -28,7 +28,7 @@ describe('createPage()', () => {
       fetch: mockfetch
     } as any
     createPage('test-api-key', 'test-param' as any)
-    expect(mockfetch).toBeCalledWith('https://api.notion.com/v1/pages', {
+    expect(mockfetch).toHaveBeenCalledWith('https://api.notion.com/v1/pages', {
       method: 'post',
       headers: {
         Authorization: `Bearer test-api-key`,
@@ -53,7 +53,7 @@ describe('updatePage()', () => {
       page_id: 'test-page-id',
       properties: 'test-properties'
     } as any)
-    expect(mockfetch).toBeCalledWith(
+    expect(mockfetch).toHaveBeenCalledWith(
       'https://api.notion.com/v1/pages/test-page-id',
       {
         method: 'patch',
@@ -159,7 +159,7 @@ describe('getStoredItems()', () => {
       'test-page-id-1',
       'test-page-id-4'
     ])
-    expect(mockfetch).toBeCalledWith(
+    expect(mockfetch).toHaveBeenCalledWith(
       'https://api.notion.com/v1/databases/test-database-id/query',
       {
         method: 'post',
@@ -178,7 +178,7 @@ describe('getStoredItems()', () => {
         })
       }
     )
-    expect(mockfetch).toBeCalledWith(
+    expect(mockfetch).toHaveBeenCalledWith(
       'https://api.notion.com/v1/databases/test-database-id/query',
       {
         method: 'post',
