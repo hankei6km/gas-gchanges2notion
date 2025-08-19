@@ -1,9 +1,9 @@
 import { jest } from '@jest/globals'
 import { createPage, updatePage, StoredItems, isErrRes } from '../src/notion'
 
-const saveUrlFetchApp = global.UrlFetchApp
+const saveUrlFetchApp = globalThis.UrlFetchApp
 afterEach(() => {
-  global.UrlFetchApp = saveUrlFetchApp
+  globalThis.UrlFetchApp = saveUrlFetchApp
 })
 
 describe('isErrRese()', () => {
@@ -24,7 +24,7 @@ describe('createPage()', () => {
     const mockfetch = jest.fn().mockReturnValue({
       getResponseCode: jest.fn().mockReturnValue(200)
     })
-    global.UrlFetchApp = {
+    globalThis.UrlFetchApp = {
       fetch: mockfetch
     } as any
     createPage('test-api-key', 'test-param' as any)
@@ -46,7 +46,7 @@ describe('updatePage()', () => {
     const mockfetch = jest.fn().mockReturnValue({
       getResponseCode: jest.fn().mockReturnValue(200)
     })
-    global.UrlFetchApp = {
+    globalThis.UrlFetchApp = {
       fetch: mockfetch
     } as any
     updatePage('test-api-key', {
@@ -126,7 +126,7 @@ describe('getStoredItems()', () => {
         )
       })
 
-    global.UrlFetchApp = {
+    globalThis.UrlFetchApp = {
       fetch: mockfetch
     } as any
 

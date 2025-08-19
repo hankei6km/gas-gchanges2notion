@@ -2,13 +2,13 @@ import { jest } from '@jest/globals'
 import { GchangesToNotion } from '../src/gchanges2notion.js'
 import { StoredItems } from '../src/notion.js'
 
-const saveDrive = global.Drive
-const saveDriveApp = global.DriveApp
-const saveDateNow = global.Date.now
+const saveDrive = globalThis.Drive
+const saveDriveApp = globalThis.DriveApp
+const saveDateNow = globalThis.Date.now
 afterEach(() => {
-  global.Drive = saveDrive
-  global.DriveApp = saveDriveApp
-  global.Date.now = saveDateNow
+  globalThis.Drive = saveDrive
+  globalThis.DriveApp = saveDriveApp
+  globalThis.Date.now = saveDateNow
 })
 
 jest.unstable_mockModule('../src/util.js', () => {
@@ -100,7 +100,7 @@ describe('genCreatePageParameters()', () => {
       thumbnailLink: 'test-thumbnail-link-new-1'
     })
     const mockRemove = jest.fn()
-    global.Drive = {
+    globalThis.Drive = {
       Files: {
         get: mockGet,
         remove: mockRemove
@@ -136,7 +136,7 @@ describe('genCreatePageParameters()', () => {
       .fn()
       .mockReturnValueOnce(mockFileObj1)
       .mockReturnValueOnce(mockFileObj2)
-    global.DriveApp = {
+    globalThis.DriveApp = {
       getFolderById: mockGetFolderById,
       getFileById: mockFileById
     } as any
