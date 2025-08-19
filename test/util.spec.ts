@@ -9,19 +9,19 @@ import {
   isTextType
 } from '../src/util.js'
 
-const saveDrive = global.Drive
-const saveDriveApp = global.DriveApp
-const saveUtilities = global.Utilities
-const saveDocumentApp = global.DocumentApp
-const saveSpreadsheetApp = global.SpreadsheetApp
-const saveSlidesApp = global.SlidesApp
+const saveDrive = globalThis.Drive
+const saveDriveApp = globalThis.DriveApp
+const saveUtilities = globalThis.Utilities
+const saveDocumentApp = globalThis.DocumentApp
+const saveSpreadsheetApp = globalThis.SpreadsheetApp
+const saveSlidesApp = globalThis.SlidesApp
 afterEach(() => {
-  global.Drive = saveDrive
-  global.DriveApp = saveDriveApp
-  global.Utilities = saveUtilities
-  global.DocumentApp = saveDocumentApp
-  global.SpreadsheetApp = saveSpreadsheetApp
-  global.SlidesApp = saveSlidesApp
+  globalThis.Drive = saveDrive
+  globalThis.DriveApp = saveDriveApp
+  globalThis.Utilities = saveUtilities
+  globalThis.DocumentApp = saveDocumentApp
+  globalThis.SpreadsheetApp = saveSpreadsheetApp
+  globalThis.SlidesApp = saveSlidesApp
 })
 function getMockNewBlob() {
   return jest
@@ -48,7 +48,7 @@ describe('isTextType()', () => {
 
 describe('getContentLines()', () => {
   it('should return all lines', () => {
-    global.Utilities = {
+    globalThis.Utilities = {
       newBlob: getMockNewBlob()
     } as any
 
@@ -59,7 +59,7 @@ describe('getContentLines()', () => {
   })
 
   it('should limit lines by maxContentLength', () => {
-    global.Utilities = {
+    globalThis.Utilities = {
       newBlob: getMockNewBlob()
     } as any
 
@@ -125,7 +125,7 @@ describe('asText()', () => {
         getText: jest.fn().mockReturnValue('test-document-text')
       })
     })
-    global.DocumentApp = {
+    globalThis.DocumentApp = {
       openById: mockOpenById
     } as any
     expect(
@@ -161,7 +161,7 @@ describe('asText()', () => {
         getRange: mockRange
       })
     })
-    global.SpreadsheetApp = {
+    globalThis.SpreadsheetApp = {
       openById: mockOpenById
     } as any
     expect(
@@ -220,7 +220,7 @@ test-val-3-1\ttest-val-3-2`)
     const mockOpenById = jest.fn().mockReturnValue({
       getSlides: jest.fn().mockReturnValue([mockSlide1, mockSlide2])
     })
-    global.SlidesApp = {
+    globalThis.SlidesApp = {
       openById: mockOpenById
     } as any
     expect(
@@ -268,10 +268,10 @@ describe('changedItems()', () => {
       .fn()
       .mockReturnValueOnce(mockFileObj1)
       .mockReturnValueOnce(mockFileObj2)
-    global.DriveApp = {
+    globalThis.DriveApp = {
       getFileById: mockFileById
     } as any
-    global.Utilities = {
+    globalThis.Utilities = {
       newBlob: getMockNewBlob()
     } as any
 
